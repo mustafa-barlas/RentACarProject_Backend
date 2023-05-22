@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Business.Concrete
@@ -26,12 +27,12 @@ namespace Business.Concrete
 
         public List<Car> GetAllByBrand(int id)
         {
-            return _carDal.GetAll(c => c.BrandId == id);
+            throw new NotImplementedException();
         }
 
         public List<Car> GetByUnitPrice(decimal min, decimal max)
         {
-            return _carDal.GetAll(p => p.UnitsİnPrice >= min && p.UnitsİnPrice <= max);
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,11 +9,11 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            foreach (var car in carManager.GetByUnitPrice(110,150))
+            foreach (var item in rentalManager.GetRentalDetails())
             {
-                Console.WriteLine(car.CarName);
+                Console.WriteLine(item.RentalName +" "+item.CarName);
             }
         }
     }

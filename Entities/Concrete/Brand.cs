@@ -11,6 +11,12 @@ namespace Entities.Concrete
     {
         public int BrandId { get; set; }
 
+        public int CarId { get; set; }
+
         public int BrandName { get; set; }
+
+        public string Description { get; set; }
+
+        public string Property { get; set; }
     }
 }
