@@ -13,6 +13,6 @@ namespace Entities.Concrete
 
         public string CustomerName { get; set; }
 
-        public string  City { get; set; }
+        public string  CustomerCity { get; set; }
     }
 }

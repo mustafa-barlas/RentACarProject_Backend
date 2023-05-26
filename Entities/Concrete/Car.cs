@@ -13,5 +13,11 @@ namespace Entities.Concrete
 
         public string CarName { get; set; }
 
+        public int BrandId { get; set; }
+
+        public int ColorId { get; set; }
+
+        public decimal DailyPrice { get; set; }
+
     }
 }

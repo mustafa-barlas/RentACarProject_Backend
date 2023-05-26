@@ -11,10 +11,19 @@ namespace Business.Abstract
     {
         List<Car> GetAll();
 
-        List<Car> GetAllByBrand(int id);
+        List<Car> GetCarsByBrandId(int id);
 
         List<Car> GetByUnitPrice(decimal min, decimal max);
 
+        List<Car> GetCarsByColorId(int id);
+
+        Car GetById(int id);
+
+        void Add(Car car);
+
+        void Delete(Car car);
+
+        void Update(Car car);
 
     }
 }
