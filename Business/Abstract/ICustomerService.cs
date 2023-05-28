@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace Business.Abstract
     public interface ICustomerService
     {
         List<Customer> GetAll();
+
+        List<CustomerDetailDto> GetCustomerDetails();
 
         Customer GetById(int id);
 

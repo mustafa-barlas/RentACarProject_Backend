@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCustomerDal :EfEntityRepositoryBase<Customer,Context> , ICustomerDal
+    public class EfCustomerDal : EfEntityRepositoryBase<Customer, Context>, ICustomerDal
     {
-       
+        public List<CustomerDetailDto> GetCustomerDetails()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

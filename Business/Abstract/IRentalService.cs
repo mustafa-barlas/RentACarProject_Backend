@@ -12,7 +12,7 @@ namespace Business.Abstract
     {
         List<Rental> GetAll();
 
-        List<Rental> GetByCarId(int id);
+        Rental GetById(int id);
 
         List<Rental> GetByUnitPrice(decimal min, decimal max);
 

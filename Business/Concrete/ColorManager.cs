@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -28,7 +29,12 @@ namespace Business.Concrete
             return _colorDal.GetAll();
         }
 
-        public Color GetColorId(int id)
+        public List<ColorDetailDto> GetColorDetails()
+        {
+            return _colorDal.GetColorDetails();
+        }
+
+        public Color GetById(int id)
         {
             return _colorDal.Get(x => x.ColorId == id);
         }

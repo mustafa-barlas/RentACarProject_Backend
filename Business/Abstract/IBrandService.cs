@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace Business.Abstract
     public interface IBrandService
     {
         List<Brand> GetAll();
+
+        List<BrandDetailDto > GetBrandDetails();
 
         Brand GetById(int id);
 

@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +21,22 @@ namespace Business.Concrete
             _carDal=carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            _carDal.Add(car);
+             _carDal.Add(car);
+            return new Result(true,"başarılı");
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
+            return new Result(true, "başarılı");
+        }
+
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new Result(true, "başarılı");
         }
 
         public List<Car> GetAll()
@@ -54,9 +64,10 @@ namespace Business.Concrete
             return _carDal.GetAll(x => x.ColorId == id);
         }
 
-        public void Update(Car car)
+
+        public List<CarDetailDto> GetCarDetails()
         {
-            _carDal.Update(car);
+            return _carDal.GetCarDetails();
         }
     }
 }

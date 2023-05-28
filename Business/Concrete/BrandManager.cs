@@ -1,12 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -32,6 +27,11 @@ namespace Business.Concrete
         public List<Brand> GetAll()
         {
             return _brandDal.GetAll();
+        }
+
+        public List<BrandDetailDto> GetBrandDetails()
+        {
+           return _brandDal.GetBrandDetails();
         }
 
         public Brand GetById(int id)

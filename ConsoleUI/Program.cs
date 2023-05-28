@@ -29,14 +29,24 @@ namespace ConsoleUI
             //    Console.WriteLine(item.BrandName);
             //}
 
-            CarManager car = new CarManager(new EfCarDal());
+            //CarManager car = new CarManager(new EfCarDal());
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            foreach (var item in car.GetCarsByColorId(3))
-            {
-                Console.WriteLine( item.CarName +"   "+ item.DailyPrice);
-            }
+            //foreach (var item in car.GetCarsByColorId(3))
+            //{
+            //    Console.WriteLine( item.CarName +"   "+ item.DailyPrice);
+            //}
+
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetById(1);
+            Console.WriteLine(result.CarName +"   "+ result.ColorName);
+
+            //foreach (var car in carManager.GetCarDetails())
+            //{
+            //    Console.WriteLine(car.CarName + " "+car.ColorName);
+            //}
+
         }
     }
 }

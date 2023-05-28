@@ -12,7 +12,6 @@ namespace Entities.DTOs
         public int RentalId { get; set; }
 
         public int CarId { get; set; }
-        
 
         public int CustomerId { get; set; }
 

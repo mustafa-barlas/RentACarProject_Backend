@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace Business.Abstract
     {
         List<Color> GetAll();
 
-        Color GetColorId(int id);
+        List<ColorDetailDto> GetColorDetails();
+
+        Color GetById(int id);
 
         void Add(Color color);
 

@@ -25,9 +25,9 @@ namespace Business.Concrete
             return _rentalDal.GetAll();
         }
 
-        public List<Rental> GetByCarId(int id)
+        public Rental GetById(int id)
         {
-            return _rentalDal.GetAll(x => x.RentalId == id);
+            return _rentalDal.Get(x => x.RentalId == id);
         }
 
         public List<Rental> GetByUnitPrice(decimal min, decimal max)
