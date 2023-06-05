@@ -2,13 +2,6 @@
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -25,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
                               join s in context.colors
                               on a.CarId equals s.ColorId
                               select new CarDetailDto 
-                              { BrandId = c.BrandId, CarId = r.CarId ,CarName = r.CarName , DailyPrice = r.DailyPrice ,ColorId = r.ColorId, BrandName = c.BrandName,ColorName =s.ColorName };
+                              { BrandId = c.BrandId, CarId = r.CarId ,CarName = r.CarName  ,ColorId = r.ColorId, BrandName = c.BrandName,ColorName =s.ColorName };
 
                 return  result.ToList();
             }

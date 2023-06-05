@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -13,31 +15,52 @@ namespace Business.Concrete
 {
     public class RentalManager : IRentalService
     {
-        IRentalDal _rentalDal;
+        private IRentalDal _rentalDal;
 
         public RentalManager(IRentalDal rentalDal)
         {
-            _rentalDal=rentalDal;
+            _rentalDal = rentalDal;
         }
 
-        public List<Rental> GetAll()
+        public IResult Add(Rental rental)
         {
-            return _rentalDal.GetAll();
+           
+            _rentalDal.Add(rental);
+
+            return new SuccessResult(Messages.ProductAdded.ToString());
         }
 
-        public Rental GetById(int id)
+        public IResult Delete(Rental rental)
         {
-            return _rentalDal.Get(x => x.RentalId == id);
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public List<Rental> GetByUnitPrice(decimal min, decimal max)
+        public IDataResult<List<Rental>> GetAll()
         {
-            return _rentalDal.GetAll(x => x.Price >= min && x.Price <= max);
+           
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Messages.ProductGetAll);
         }
 
-        public List<RentalDetailDto> GetRentalDetails()
+        public IDataResult<Rental> GetById(int id)
         {
-            return _rentalDal.GetRentalDetails();
+            return new SuccessDataResult<Rental>(_rentalDal.Get(x => x.RentalId == id),Messages.ProductGetAll);
+        }
+
+        public IDataResult<List<Rental>> GetByUnitPrice(decimal min, decimal max)
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(x => x.DailyPrice >= min && x.DailyPrice <= max),Messages.ProductGetAll);
+        }
+
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        {
+           return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(),Messages.ProductGetAll);
+        }
+
+        public IResult Update(Rental rental)
+        {
+            _rentalDal.Update(rental);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }

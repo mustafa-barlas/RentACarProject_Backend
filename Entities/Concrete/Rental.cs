@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,16 @@ namespace Entities.Concrete
         public int  CustomerId { get; set; }
 
         public string RentalName { get; set; }
-        
+
         public DateTime RenDate { get; set; }
 
-        public DateTime DeadlineTime { get; set; }
+        public DateTime ReturnDate { get; set; }
 
         public string Description { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal DailyPrice { get; set; }
+
+        public bool IsAvilable { get; set; }
 
     }
 }

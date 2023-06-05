@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -19,34 +21,37 @@ namespace Business.Concrete
             _customerDal=customerDal;
         }
 
-        public void Add(Customer customer)
+        IResult ICustomerService.Add(Customer customer)
         {
             _customerDal.Add(customer);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
-        public void Delete(Customer customer)
+        IResult ICustomerService.Delete(Customer customer)
         {
             _customerDal.Delete(customer);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public List<Customer> GetAll()
+        IDataResult<List<Customer>> ICustomerService.GetAll()
         {
-            return _customerDal.GetAll();   
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(),Messages.ProductGetAll);
         }
 
-        public Customer GetById(int id)
+        IDataResult<Customer> ICustomerService.GetById(int id)
         {
-            return _customerDal.Get(x => x.CustomerId == id);
+            return new SuccessDataResult<Customer>(_customerDal.Get(x => x.CustomerId == id),Messages.ProductGetAll);
         }
 
-        public List<CustomerDetailDto> GetCustomerDetails()
+        IDataResult<List<CustomerDetailDto>> ICustomerService.GetCustomerDetails()
         {
-            return _customerDal.GetCustomerDetails();
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(),Messages.ProductGetAll);
         }
 
-        public void Update(Customer customer)
+        IResult ICustomerService.Update(Customer customer)
         {
-           _customerDal.Update(customer);
+            _customerDal.Update(customer);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }

@@ -54,20 +54,16 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(x => x.CarId == id),Messages.ProductGetAll);
         }
 
-        public IDataResult<List<Car>> GetByUnitPrice(decimal min, decimal max)
-        {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.DailyPrice >= min && x.DailyPrice <= max),Messages.ProductGetAll);
-        }
+        
 
         public IDataResult<List<Car>>  GetCarsByColorId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id),Messages.ProductGetAll);
         }
 
-
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),Messages.ProductGetAll);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.ProductGetAll);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -14,34 +16,37 @@ namespace Business.Concrete
             _colorDal=colorDal;
         }
 
-        public void Add(Color color)
+        public IResult Add(Color color)
         {
             _colorDal.Add(color);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
-        public void Delete(Color color)
+        public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _colorDal.GetAll();
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.ProductGetAll);
         }
 
-        public List<ColorDetailDto> GetColorDetails()
+        public IDataResult<Color> GetById(int id)
         {
-            return _colorDal.GetColorDetails();
+            return new SuccessDataResult<Color>(_colorDal.Get(x => x.ColorId == id),Messages.ProductGetAll);
         }
 
-        public Color GetById(int id)
+        public IDataResult<List<ColorDetailDto>> GetColorDetails()
         {
-            return _colorDal.Get(x => x.ColorId == id);
+            return new SuccessDataResult<List<ColorDetailDto>>(_colorDal.GetColorDetails(),Messages.ProductGetAll);
         }
 
-        public void Update(Color color)
+        public IResult Update(Color color)
         {
             _colorDal.Update(color);
+            return new SuccessResult(Messages.ProductGetAll);
         }
     }
 }
