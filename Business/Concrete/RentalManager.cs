@@ -38,8 +38,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
+            if (DateTime.Now.Hour == 2)
+            {
+                return new  ErrorDataResult<List<Rental>>(Messages.MaintenanceTime);
+            }
            
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Messages.ProductGetAll);
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Messages.ProductGetAll.ToString());
         }
 
         public IDataResult<Rental> GetById(int id)

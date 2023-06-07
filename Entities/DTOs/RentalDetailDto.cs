@@ -19,6 +19,8 @@ namespace Entities.DTOs
 
         public string CarName { get; set; }
 
+        public string CustomerName { get; set; }
+
         public DateTime RenDate { get; set; }
 
         public DateTime DeadlineTime { get; set; }

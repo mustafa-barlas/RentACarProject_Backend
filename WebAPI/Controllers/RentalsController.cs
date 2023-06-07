@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Constants;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,13 +23,84 @@ namespace WebAPI.Controllers
             _rentalService = rentalService;
         }
 
-        [HttpGet]
-        public List<Rental> GetAll()
+        [HttpGet("getall")]
+        public IActionResult GetAll()
         {
-            
-           
             var result = _rentalService.GetAll();
-            return result.Data;
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            
+            return BadRequest(result);
+            
+        }
+
+
+
+
+        [HttpGet("getbyid")]
+        public IActionResult Get(int id)
+        {
+            var result = _rentalService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+
+
+        [HttpPost("add")]
+        public IActionResult Post(Rental rental)
+        {
+            var result = _rentalService.Add(rental);
+            if (rental.RentalName.Length < 3)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+
+
+        [HttpPost("update")]
+        public IActionResult Update(Rental rental)
+        {
+            var result = _rentalService.Update(rental);
+            if (true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpPost("delete")]
+        public IActionResult Delete(Rental rental)
+        {
+            var  result = _rentalService.Delete(rental);
+            if (true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+
+        [HttpGet("details")]
+        public IActionResult GetRentalDetails()
+        {
+            var result = _rentalService.GetRentalDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

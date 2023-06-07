@@ -19,7 +19,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join c in context.customers
                              on r.CustomerId equals c.CustomerId
                              select new RentalDetailDto
-                             { RentalId = y.RentalId, RentalName = y.RentalName, CustomerId = y.CustomerId };
+                             { RentalId = y.RentalId, CarId = x.CarId, RentalName = y.RentalName, CustomerId = c.CustomerId, CustomerName = c.CustomerName,  CarName = x.CarName ,Price = y.DailyPrice };
                 return result.ToList();
             }
         }
