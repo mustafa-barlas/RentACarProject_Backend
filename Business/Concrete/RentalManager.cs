@@ -27,7 +27,7 @@ namespace Business.Concrete
            
             _rentalDal.Add(rental);
 
-            return new SuccessResult(Messages.ProductAdded.ToString());
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public IResult Delete(Rental rental)
@@ -48,7 +48,7 @@ namespace Business.Concrete
 
         public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(x => x.RentalId == id),Messages.ProductGetAll);
+            return new SuccessDataResult<Rental>(_rentalDal.Get(x => x.Id == id),Messages.ProductGetAll);
         }
 
         public IDataResult<List<Rental>> GetByUnitPrice(decimal min, decimal max)

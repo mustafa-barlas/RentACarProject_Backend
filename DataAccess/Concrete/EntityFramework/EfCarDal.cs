@@ -9,19 +9,20 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<CarDetailDto> GetCarDetails()
         {
-            using (var context = new Context())
-            {
-                var result =  from r in context.cars
-                              join c in context.brands
-                              on r.BrandId equals c.BrandId 
-                              from a in context.cars
-                              join s in context.colors
-                              on a.CarId equals s.ColorId
-                              select new CarDetailDto 
-                              { BrandId = c.BrandId, CarId = r.CarId ,CarName = r.CarName  ,ColorId = r.ColorId, BrandName = c.BrandName,ColorName =s.ColorName };
+            //using (var context = new Context())
+            //{
+            //    var result =  from r in context.cars
+            //                  join c in context.brands
+            //                  on r.BrandId equals c.BrandId 
+            //                  from a in context.cars
+            //                  join s in context.colors
+            //                  on a.CarId equals s.ColorId
+            //                  select new CarDetailDto 
+            //                  { BrandId = c.BrandId, CarId = r.CarId ,CarName = r.CarName  ,ColorId = r.ColorId, BrandName = c.BrandName,ColorName =s.ColorName };
 
-                return  result.ToList();
-            }
+            //    return  result.ToList();
+            //}
+            throw new NotImplementedException();
         }
     }
 }

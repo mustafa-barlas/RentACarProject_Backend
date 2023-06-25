@@ -25,6 +25,6 @@ namespace DataAccess.Concrete.EntityFramework
 
         public DbSet<Color> colors { get; set; }
 
-        public DbSet<User> users { get; set; }
+        public DbSet<User> users { get; set; }     
     }
 }

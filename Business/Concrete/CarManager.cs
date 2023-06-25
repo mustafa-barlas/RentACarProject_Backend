@@ -18,7 +18,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-             if (car.CarName.Length < 2)
+             if (car.Name.Length < 2)
             {
                 // magic strings 
                 return new ErrorResult(Messages.ProductNameInValid);
@@ -30,13 +30,13 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new Result(true, "başarılı");
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
         public IResult Update(Car car)
         {
             _carDal.Update(car);
-            return new Result(true, "başarılı");
+            return new SuccessResult(Messages.ProductUpdated);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -46,19 +46,21 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.BrandId == id),Messages.ProductGetAll);
+            //return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.BrandId == id),Messages.ProductGetAll);
+            throw new NotImplementedException();
         }
 
         public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(x => x.CarId == id),Messages.ProductGetAll);
+            return new SuccessDataResult<Car>(_carDal.Get(x => x.Id == id),Messages.ProductGetById);
         }
 
         
 
         public IDataResult<List<Car>>  GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id),Messages.ProductGetAll);
+            //return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id),Messages.ProductGetAll);
+            throw new NotImplementedException();
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()

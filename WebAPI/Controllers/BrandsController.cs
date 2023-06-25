@@ -1,44 +1,36 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController] // ATRIBUTE : 
-
-    //IOC   Inversion Of Control
-    public class RentalsController : ControllerBase
+    [ApiController]
+    public class BrandsController : ControllerBase
     {
-        private IRentalService _rentalService;
+        private IBrandService _brandService;
 
-
-        public RentalsController(IRentalService rentalService)
+        public BrandsController(IBrandService brandService)
         {
-            _rentalService = rentalService;
+            _brandService = brandService;
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public IActionResult Getall()
         {
-            var result = _rentalService.GetAll();
+            var result = _brandService.GetAll();
             if (result.Success)
             {
-                if (true)
-                {
-                   
-                }
-                return Ok(result.Data);
+                return Ok(result);
             }
-            
             return BadRequest(result);
-            
         }
 
         [HttpGet("getbyid")]
         public IActionResult Get(int id)
         {
-            var result = _rentalService.GetById(id);
+            var result = _brandService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -46,52 +38,43 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-
-
-
-        [HttpPost("add")]
-        public IActionResult Post(Rental rental)
+        [HttpPost("ad")]
+        public IActionResult Add(Brand brand)
         {
-            var result = _rentalService.Add(rental);
-            if (rental.Name.Length < 3)
+            var result = _brandService.Add(brand);
+            if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-
-
 
         [HttpPost("update")]
-        public IActionResult Update(Rental rental)
+        public IActionResult Update(Brand brand)
         {
-            var result = _rentalService.Update(rental);
-            if (true)
+            var result = _brandService.Update(brand);
+            if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
 
         [HttpPost("delete")]
-        public IActionResult Delete(Rental rental)
+        public IActionResult Delete(Brand brand)
         {
-            var  result = _rentalService.Delete(rental);
-            if (true)
+            var result = _brandService.Delete(brand);
+            if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-
 
         [HttpGet("details")]
         public IActionResult GetRentalDetails()
         {
-            var result = _rentalService.GetRentalDetails();
+            var result = _brandService.GetBrandDetails();
             if (result.Success)
             {
                 return Ok(result);

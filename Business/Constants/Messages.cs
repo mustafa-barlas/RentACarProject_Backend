@@ -18,7 +18,7 @@ namespace Business.Constants
 
         public static string ProductGetAll = "Tüm ürünler Listelendi";
 
-        public static string ProductGetById = "Tüm ürün Listelendi";
+        public static string ProductGetById = " ürün Getirildi";
 
         public static string MaintenanceTime = "Üzgünüz ama bakımdayız sizi ufak bekleticez";
     }
