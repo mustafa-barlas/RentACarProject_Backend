@@ -1,10 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Business.Abstract;
-using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
-using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 
 namespace WebAPI
 {
@@ -29,7 +25,9 @@ namespace WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(options => options.RegisterModule(new AutofacBusinessModule())));
+            builder.Host.UseServiceProviderFactory(
+                new AutofacServiceProviderFactory
+                    (options => options.RegisterModule(new AutofacBusinessModule())));
 
             //builder.Host.UseServiceProviderFactory(services => new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AutofacBusinessModule()); });
 

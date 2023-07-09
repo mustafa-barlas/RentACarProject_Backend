@@ -1,16 +1,12 @@
 ﻿using Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Core.Abstract
+namespace Core.DataAccess
 {
-    /* referans tip olabilir*/
-    /* entity ve entity yi refere eden bir nesne olabilir */
-    /*  new lenebilir olmalı (interface new lenemez) */
+    // class olmalı
+    // IEntity  türünde  olmalı
+    // new lenebilir olmalı  
+    // public interface IEntityRepository<T> where T : struct // Değer tipler için 
 
 
     public interface IEntityRepository<T> where T : class,   IEntity,  new() 
